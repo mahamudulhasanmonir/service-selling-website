@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCraft - Professional Coding Services</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #3498db;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #3498db;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .service-card p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .service-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: #ecf0f1;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: #7f8c8d;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #7f8c8d;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button.white {
+            background-color: white;
+            color: #e74c3c;
+        }
+        
+        .cta-button.white:hover {
+            background-color: #f8f9fa;
+            color: #c0392b;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: #ecf0f1;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+        
+        .footer-column p,
+        .footer-column a {
+            color: #bdc3c7;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #3498db;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            font-size: 20px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                margin-top: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #2c3e50;
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .service-card,
+            .testimonial-card {
+                padding: 20px;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Code<span>Craft</span></div>
+            <nav>
+                <button class="mobile-menu-btn">☰</button>
+                <ul id="nav-menu">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Professional Coding Services for Your Business</h1>
+            <p>We deliver high-quality, scalable, and maintainable code tailored to your specific needs. From web development to complex algorithms, our expert team has you covered.</p>
+            <a href="#contact" class="cta-button">Get a Free Quote</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer a wide range of coding services to help your business grow and succeed in the digital world.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications built with modern technologies like React, Vue, and Node.js.</p>
+                    <div class="service-price">From $499</div>
+                    <a href="#contact" class="cta-button">Order Now</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile App Development</h3>
+                    <p>iOS and Android apps developed natively or with cross-platform frameworks like Flutter.</p>
+                    <div class="service-price">From $999</div>
+                    <a href="#contact" class="cta-button">Order Now</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>Automation Scripts</h3>
+                    <p>Custom scripts to automate repetitive tasks and improve your workflow efficiency.</p>
+                    <div class="service-price">From $199</div>
+                    <a href="#contact" class="cta-button">Order Now</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Code Review</h3>
+                    <p>Expert analysis of your existing codebase to identify issues and improve quality.</p>
+                    <div class="service-price">From $299</div>
+                    <a href="#contact" class="cta-button">Order Now</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Data Processing</h3>
+                    <p>Custom solutions for data analysis, processing, and visualization.</p>
+                    <div class="service-price">From $399</div>
+                    <a href="#contact" class="cta-button">Order Now</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Custom Solutions</h3>
+                    <p>Tailored coding solutions for your unique business requirements.</p>
+                    <div class="service-price">Custom Quote</div>
+                    <a href="#contact" class="cta-button">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About CodeCraft</h2>
+                    <p>We are a team of passionate developers with over 10 years of combined experience in delivering high-quality coding solutions to businesses of all sizes.</p>
+                    <p>Our mission is to help businesses leverage technology to solve problems, improve efficiency, and drive growth through custom coding solutions.</p>
+                    <p>We pride ourselves on writing clean, maintainable code with thorough documentation and testing.</p>
+                    <a href="#services" class="cta-button">Explore Our Services</a>
+                </div>
+                <div class="about-image">
+                    <!-- Replace with your actual image path -->
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Team coding together">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Don't just take our word for it. Here's what our clients have to say about our services.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "CodeCraft delivered our e-commerce platform ahead of schedule. The code was clean, well-documented, and exactly what we needed. Highly recommended!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <!-- Replace with your actual image path -->
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>CEO, TrendyStore</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The automation scripts they created saved us hundreds of hours of manual work. The team was professional and responsive throughout the project."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <!-- Replace with your actual image path -->
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Operations Manager, DataPlus</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "We hired CodeCraft for a code review of our legacy system. They identified critical issues we had missed and provided clear recommendations for improvement."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <!-- Replace with your actual image path -->
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma Rodriguez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Emma Rodriguez</h4>
+                            <p>CTO, FinTech Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business with Code?</h2>
+            <p>Get in touch with us today to discuss your project requirements and receive a free consultation.</p>
+            <a href="#contact" class="cta-button white">Start Your Project</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Have a project in mind? Fill out the form below and we'll get back to you within 24 hours.</p>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="service">
+                            <option value="web">Web Development</option>
+                            <option value="mobile">Mobile App Development</option>
+                            <option value="automation">Automation Scripts</option>
+                            <option value="review">Code Review</option>
+                            <option value="data">Data Processing</option>
+                            <option value="custom">Custom Solution</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CodeCraft</h3>
+                    <p>Professional coding services tailored to your business needs. Quality code, delivered on time.</p>
+                    <div class="social-links">
+                        <a href="#"><span>📱</span></a>
+                        <a href="#"><span>💻</span></a>
+                        <a href="#"><span>📧</span></a>
+                        <a href="#"><span>🔗</span></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <a href="#services">Web Development</a>
+                    <a href="#services">Mobile App Development</a>
+                    <a href="#services">Automation Scripts</a>
+                    <a href="#services">Code Review</a>
+                    <a href="#services">Data Processing</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <a href="#about">About Us</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Careers</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>hello@codecraft.dev</p>
+                    <p>+1 (555) 123-4567</p>
+                    <p>123 Coding Street</p>
+                    <p>Tech City, TC 10001</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CodeCraft. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('show');
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('nav-menu').classList.remove('show');
+                }
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the data to your server
+            // For this example, we'll just show an alert
+            alert(`Thank you, ${name}! Your message about ${service} has been received. We'll contact you at ${email} soon.`);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Scroll Animation - Add class to elements when they come into view
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.service-card, .about-content, .testimonial-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animated elements
+        window.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.service-card, .about-content, .testimonial-card');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Trigger once on load
+            animateOnScroll();
+        });
+
+        // Add scroll event listener
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
